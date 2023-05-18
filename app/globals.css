@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 98%);
+  --typography: hsl(200, 15%, 8%);  
+  --placeholder: hsl(0, 0%, 52%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root.dark {
+    --background: hsl(207, 26%, 17%);
+    --typography: hsl(0, 0%, 100%);
+    --placeholder: hsl(0, 0%, 100%);
+  }
+}
+
+body {
+  color: var(--typography);
+  background: var(--background);
+}
