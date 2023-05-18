@@ -1,10 +1,10 @@
-import { Metadata } from "next";
+// import { Metadata } from "next";
 import Detail from "./detail";
 import { getByCode } from "@/app/services/api";
 
-export const metadata: Metadata = {
-  title: "Detail",
-};
+// export const metadata: Metadata = {
+//   title: "Detail",
+// };
 
 type Props = {
   params: { slug: string };

@@ -5,61 +5,49 @@ exports.id = 660;
 exports.ids = [660];
 exports.modules = {
 
-/***/ 7930:
+/***/ 3109:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({
     value: true
 }));
-0 && (0);
-function _export(target, all) {
-    for(var name in all)Object.defineProperty(target, name, {
-        enumerable: true,
-        get: all[name]
-    });
-}
-_export(exports, {
-    Head: function() {
-        return Head;
-    },
-    NextScript: function() {
-        return NextScript;
-    },
-    Html: function() {
-        return Html;
-    },
-    Main: function() {
-        return Main;
-    },
+exports.Html = Html;
+exports.Main = Main;
+exports["default"] = void 0;
+var _react = _interopRequireWildcard(__webpack_require__(8038));
+var _constants = __webpack_require__(6724);
+var _getPageFiles = __webpack_require__(4140);
+var _htmlescape = __webpack_require__(9716);
+var _isError = _interopRequireDefault(__webpack_require__(676));
+var _htmlContext = __webpack_require__(8743);
+class Document extends _react.default.Component {
     /**
- * `Document` component handles the initial `document` markup and renders only on the server side.
- * Commonly used for implementing server side rendering for `css-in-js` libraries.
- */ default: function() {
-        return Document;
+   * `getInitialProps` hook returns the context object with the addition of `renderPage`.
+   * `renderPage` callback executes `React` rendering logic synchronously to support server-rendering wrappers
+   */ static getInitialProps(ctx) {
+        return ctx.defaultGetInitialProps(ctx);
     }
-});
-const _react = /*#__PURE__*/ _interop_require_wildcard(__webpack_require__(6689));
-const _constants = __webpack_require__(6724);
-const _getpagefiles = __webpack_require__(4140);
-const _htmlescape = __webpack_require__(9716);
-const _iserror = /*#__PURE__*/ _interop_require_default(__webpack_require__(676));
-const _htmlcontext = __webpack_require__(8743);
-function _interop_require_default(obj) {
+    render() {
+        return /*#__PURE__*/ _react.default.createElement(Html, null, /*#__PURE__*/ _react.default.createElement(Head, null), /*#__PURE__*/ _react.default.createElement("body", null, /*#__PURE__*/ _react.default.createElement(Main, null), /*#__PURE__*/ _react.default.createElement(NextScript, null)));
+    }
+}
+exports["default"] = Document;
+function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : {
         default: obj
     };
 }
-function _getRequireWildcardCache(nodeInterop) {
+function _getRequireWildcardCache() {
     if (typeof WeakMap !== "function") return null;
-    var cacheBabelInterop = new WeakMap();
-    var cacheNodeInterop = new WeakMap();
-    return (_getRequireWildcardCache = function(nodeInterop) {
-        return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-    })(nodeInterop);
+    var cache = new WeakMap();
+    _getRequireWildcardCache = function() {
+        return cache;
+    };
+    return cache;
 }
-function _interop_require_wildcard(obj, nodeInterop) {
-    if (!nodeInterop && obj && obj.__esModule) {
+function _interopRequireWildcard(obj) {
+    if (obj && obj.__esModule) {
         return obj;
     }
     if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
@@ -67,14 +55,14 @@ function _interop_require_wildcard(obj, nodeInterop) {
             default: obj
         };
     }
-    var cache = _getRequireWildcardCache(nodeInterop);
+    var cache = _getRequireWildcardCache();
     if (cache && cache.has(obj)) {
         return cache.get(obj);
     }
     var newObj = {};
     var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
     for(var key in obj){
-        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
             var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
             if (desc && (desc.get || desc.set)) {
                 Object.defineProperty(newObj, key, desc);
@@ -89,10 +77,9 @@ function _interop_require_wildcard(obj, nodeInterop) {
     }
     return newObj;
 }
-/** Set of pages that have triggered a large data warning on production mode. */ const largePageDataWarnings = new Set();
 function getDocumentFiles(buildManifest, pathname, inAmpMode) {
-    const sharedFiles = (0, _getpagefiles.getPageFiles)(buildManifest, "/_app");
-    const pageFiles =  true && inAmpMode ? [] : (0, _getpagefiles.getPageFiles)(buildManifest, pathname);
+    const sharedFiles = (0, _getPageFiles).getPageFiles(buildManifest, "/_app");
+    const pageFiles =  true && inAmpMode ? [] : (0, _getPageFiles).getPageFiles(buildManifest, pathname);
     return {
         sharedFiles,
         pageFiles,
@@ -127,8 +114,8 @@ function AmpStyles({ styles  }) {
     if (styles.props && // @ts-ignore Property 'props' does not exist on type ReactElement
     Array.isArray(styles.props.children)) {
         const hasStyles = (el)=>{
-            var _el_props, _el_props_dangerouslySetInnerHTML;
-            return el == null ? void 0 : (_el_props = el.props) == null ? void 0 : (_el_props_dangerouslySetInnerHTML = _el_props.dangerouslySetInnerHTML) == null ? void 0 : _el_props_dangerouslySetInnerHTML.__html;
+            var ref, ref1;
+            return el == null ? void 0 : (ref = el.props) == null ? void 0 : (ref1 = ref.dangerouslySetInnerHTML) == null ? void 0 : ref1.__html;
         };
         // @ts-ignore Property 'props' does not exist on type ReactElement
         styles.props.children.forEach((child)=>{
@@ -161,10 +148,10 @@ function getDynamicChunks(context, props, files) {
     });
 }
 function getScripts(context, props, files) {
-    var _buildManifest_lowPriorityFiles;
+    var ref;
     const { assetPrefix , buildManifest , isDevelopment , devOnlyCacheBusterQueryString , disableOptimizedLoading , crossOrigin  } = context;
     const normalScripts = files.allFiles.filter((file)=>file.endsWith(".js"));
-    const lowPriorityScripts = (_buildManifest_lowPriorityFiles = buildManifest.lowPriorityFiles) == null ? void 0 : _buildManifest_lowPriorityFiles.filter((file)=>file.endsWith(".js"));
+    const lowPriorityScripts = (ref = buildManifest.lowPriorityFiles) == null ? void 0 : ref.filter((file)=>file.endsWith(".js"));
     return [
         ...normalScripts,
         ...lowPriorityScripts
@@ -190,8 +177,8 @@ function getPreNextWorkerScripts(context, props) {
         ];
         // Check to see if the user has defined their own Partytown configuration
         const userDefinedConfig = children.find((child)=>{
-            var _child_props, _child_props_dangerouslySetInnerHTML;
-            return hasComponentProps(child) && (child == null ? void 0 : (_child_props = child.props) == null ? void 0 : (_child_props_dangerouslySetInnerHTML = _child_props.dangerouslySetInnerHTML) == null ? void 0 : _child_props_dangerouslySetInnerHTML.__html.length) && "data-partytown-config" in child.props;
+            var ref, ref2;
+            return hasComponentProps(child) && (child == null ? void 0 : (ref = child.props) == null ? void 0 : (ref2 = ref.dangerouslySetInnerHTML) == null ? void 0 : ref2.__html.length) && "data-partytown-config" in child.props;
         });
         return /*#__PURE__*/ _react.default.createElement(_react.default.Fragment, null, !userDefinedConfig && /*#__PURE__*/ _react.default.createElement("script", {
             "data-partytown-config": "",
@@ -226,18 +213,16 @@ function getPreNextWorkerScripts(context, props) {
             } else {
                 throw new Error("Invalid usage of next/script. Did you forget to include a src attribute or an inline script? https://nextjs.org/docs/messages/invalid-script");
             }
-            return /*#__PURE__*/ _react.default.createElement("script", {
-                ...srcProps,
-                ...scriptProps,
+            return /*#__PURE__*/ _react.default.createElement("script", Object.assign({}, srcProps, scriptProps, {
                 type: "text/partytown",
                 key: src || index,
                 nonce: props.nonce,
                 "data-nscript": "worker",
                 crossOrigin: props.crossOrigin || crossOrigin
-            });
+            }));
         }));
     } catch (err) {
-        if ((0, _iserror.default)(err) && err.code !== "MODULE_NOT_FOUND") {
+        if ((0, _isError).default(err) && err.code !== "MODULE_NOT_FOUND") {
             console.warn(`Warning: ${err.message}`);
         }
         return null;
@@ -248,14 +233,13 @@ function getPreNextScripts(context, props) {
     const webWorkerScripts = getPreNextWorkerScripts(context, props);
     const beforeInteractiveScripts = (scriptLoader.beforeInteractive || []).filter((script)=>script.src).map((file, index)=>{
         const { strategy , ...scriptProps } = file;
-        return /*#__PURE__*/ _react.default.createElement("script", {
-            ...scriptProps,
+        return /*#__PURE__*/ _react.default.createElement("script", Object.assign({}, scriptProps, {
             key: scriptProps.src || index,
             defer: scriptProps.defer ?? !disableOptimizedLoading,
             nonce: props.nonce,
             "data-nscript": "beforeInteractive",
             crossOrigin: props.crossOrigin || crossOrigin
-        });
+        }));
     });
     return /*#__PURE__*/ _react.default.createElement(_react.default.Fragment, null, webWorkerScripts, beforeInteractiveScripts);
 }
@@ -268,15 +252,15 @@ function getHeadHTMLProps(props) {
 function getAmpPath(ampPath, asPath) {
     return ampPath || `${asPath}${asPath.includes("?") ? "&" : "?"}amp=1`;
 }
-function getNextFontLinkTags(nextFontManifest, dangerousAsPath, assetPrefix = "") {
-    if (!nextFontManifest) {
+function getFontLoaderLinks(fontLoaderManifest, dangerousAsPath, assetPrefix = "") {
+    if (!fontLoaderManifest) {
         return {
             preconnect: null,
             preload: null
         };
     }
-    const appFontsEntry = nextFontManifest.pages["/_app"];
-    const pageFontsEntry = nextFontManifest.pages[dangerousAsPath];
+    const appFontsEntry = fontLoaderManifest.pages["/_app"];
+    const pageFontsEntry = fontLoaderManifest.pages[dangerousAsPath];
     const preloadedFontFiles = [
         ...appFontsEntry ?? [],
         ...pageFontsEntry ?? []
@@ -285,7 +269,6 @@ function getNextFontLinkTags(nextFontManifest, dangerousAsPath, assetPrefix = ""
     const preconnectToSelf = !!(preloadedFontFiles.length === 0 && (appFontsEntry || pageFontsEntry));
     return {
         preconnect: preconnectToSelf ? /*#__PURE__*/ _react.default.createElement("link", {
-            "data-next-font": nextFontManifest.pagesUsingSizeAdjust ? "size-adjust" : "",
             rel: "preconnect",
             href: "/",
             crossOrigin: "anonymous"
@@ -298,16 +281,13 @@ function getNextFontLinkTags(nextFontManifest, dangerousAsPath, assetPrefix = ""
                 href: `${assetPrefix}/_next/${encodeURI(fontFile)}`,
                 as: "font",
                 type: `font/${ext}`,
-                crossOrigin: "anonymous",
-                "data-next-font": fontFile.includes("-s") ? "size-adjust" : ""
+                crossOrigin: "anonymous"
             });
         }) : null
     };
 }
 class Head extends _react.default.Component {
-    static #_ = (()=>{
-        this.contextType = _htmlcontext.HtmlContext;
-    })();
+    static contextType = _htmlContext.HtmlContext;
     getCssLinks(files) {
         const { assetPrefix , devOnlyCacheBusterQueryString , dynamicImports , crossOrigin , optimizeCss , optimizeFonts  } = this.context;
         const cssFiles = files.allFiles.filter((f)=>f.endsWith(".css"));
@@ -403,8 +383,7 @@ class Head extends _react.default.Component {
             } else if (children) {
                 html = typeof children === "string" ? children : Array.isArray(children) ? children.join("") : "";
             }
-            return /*#__PURE__*/ _react.default.createElement("script", {
-                ...scriptProps,
+            return /*#__PURE__*/ _react.default.createElement("script", Object.assign({}, scriptProps, {
                 dangerouslySetInnerHTML: {
                     __html: html
                 },
@@ -412,7 +391,7 @@ class Head extends _react.default.Component {
                 nonce: nonce,
                 "data-nscript": "beforeInteractive",
                 crossOrigin: crossOrigin || undefined
-            });
+            }));
         });
     }
     getDynamicChunks(files) {
@@ -429,10 +408,10 @@ class Head extends _react.default.Component {
     }
     makeStylesheetInert(node) {
         return _react.default.Children.map(node, (c)=>{
-            var _c_props, _c_props1;
-            if ((c == null ? void 0 : c.type) === "link" && (c == null ? void 0 : (_c_props = c.props) == null ? void 0 : _c_props.href) && _constants.OPTIMIZED_FONT_PROVIDERS.some(({ url  })=>{
-                var _c_props, _c_props_href;
-                return c == null ? void 0 : (_c_props = c.props) == null ? void 0 : (_c_props_href = _c_props.href) == null ? void 0 : _c_props_href.startsWith(url);
+            var ref5, ref3;
+            if ((c == null ? void 0 : c.type) === "link" && (c == null ? void 0 : (ref5 = c.props) == null ? void 0 : ref5.href) && _constants.OPTIMIZED_FONT_PROVIDERS.some(({ url  })=>{
+                var ref, ref4;
+                return c == null ? void 0 : (ref = c.props) == null ? void 0 : (ref4 = ref.href) == null ? void 0 : ref4.startsWith(url);
             })) {
                 const newProps = {
                     ...c.props || {},
@@ -440,19 +419,18 @@ class Head extends _react.default.Component {
                     href: undefined
                 };
                 return /*#__PURE__*/ _react.default.cloneElement(c, newProps);
-            } else if (c == null ? void 0 : (_c_props1 = c.props) == null ? void 0 : _c_props1.children) {
-                const newProps = {
+            } else if (c == null ? void 0 : (ref3 = c.props) == null ? void 0 : ref3.children) {
+                const newProps1 = {
                     ...c.props || {},
                     children: this.makeStylesheetInert(c.props.children)
                 };
-                return /*#__PURE__*/ _react.default.cloneElement(c, newProps);
+                return /*#__PURE__*/ _react.default.cloneElement(c, newProps1);
             }
             return c;
-        // @types/react bug. Returned value from .map will not be `null` if you pass in `[null]`
         }).filter(Boolean);
     }
     render() {
-        const { styles , ampPath , inAmpMode , hybridAmp , canonicalBase , __NEXT_DATA__ , dangerousAsPath , headTags , unstable_runtimeJS , unstable_JsPreload , disableOptimizedLoading , optimizeCss , optimizeFonts , assetPrefix , nextFontManifest  } = this.context;
+        const { styles , ampPath , inAmpMode , hybridAmp , canonicalBase , __NEXT_DATA__ , dangerousAsPath , headTags , unstable_runtimeJS , unstable_JsPreload , disableOptimizedLoading , optimizeCss , optimizeFonts , assetPrefix , fontLoaderManifest  } = this.context;
         const disableRuntimeJS = unstable_runtimeJS === false;
         const disableJsPreload = unstable_JsPreload === false || !disableOptimizedLoading;
         this.context.docComponentsRendered.Head = true;
@@ -461,23 +439,10 @@ class Head extends _react.default.Component {
         let otherHeadElements = [];
         if (head) {
             head.forEach((c)=>{
-                let metaTag;
-                if (this.context.strictNextHead) {
-                    metaTag = /*#__PURE__*/ _react.default.createElement("meta", {
-                        name: "next-head",
-                        content: "1"
-                    });
-                }
                 if (c && c.type === "link" && c.props["rel"] === "preload" && c.props["as"] === "style") {
-                    metaTag && cssPreloads.push(metaTag);
                     cssPreloads.push(c);
                 } else {
-                    if (c) {
-                        if (metaTag && (c.type !== "meta" || !c.props["charSet"])) {
-                            otherHeadElements.push(metaTag);
-                        }
-                        otherHeadElements.push(c);
-                    }
+                    c && otherHeadElements.push(c);
                 }
             });
             head = cssPreloads.concat(otherHeadElements);
@@ -524,11 +489,10 @@ class Head extends _react.default.Component {
                 }
             }
             return child;
-        // @types/react bug. Returned value from .map will not be `null` if you pass in `[null]`
         });
         const files = getDocumentFiles(this.context.buildManifest, this.context.__NEXT_DATA__.page,  true && inAmpMode);
-        const nextFontLinkTags = getNextFontLinkTags(nextFontManifest, dangerousAsPath, assetPrefix);
-        return /*#__PURE__*/ _react.default.createElement("head", getHeadHTMLProps(this.props), this.context.isDevelopment && /*#__PURE__*/ _react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/ _react.default.createElement("style", {
+        const fontLoaderLinks = getFontLoaderLinks(fontLoaderManifest, dangerousAsPath, assetPrefix);
+        return /*#__PURE__*/ _react.default.createElement("head", Object.assign({}, getHeadHTMLProps(this.props)), this.context.isDevelopment && /*#__PURE__*/ _react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/ _react.default.createElement("style", {
             "data-next-hide-fouc": true,
             "data-ampdevmode":  true && inAmpMode ? "true" : undefined,
             dangerouslySetInnerHTML: {
@@ -541,12 +505,12 @@ class Head extends _react.default.Component {
             dangerouslySetInnerHTML: {
                 __html: `body{display:block}`
             }
-        }))), head, this.context.strictNextHead ? null : /*#__PURE__*/ _react.default.createElement("meta", {
+        }))), head, /*#__PURE__*/ _react.default.createElement("meta", {
             name: "next-head-count",
             content: _react.default.Children.count(head || []).toString()
         }), children, optimizeFonts && /*#__PURE__*/ _react.default.createElement("meta", {
             name: "next-font-preconnect"
-        }), nextFontLinkTags.preconnect, nextFontLinkTags.preload,  true && inAmpMode && /*#__PURE__*/ _react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/ _react.default.createElement("meta", {
+        }), fontLoaderLinks.preconnect, fontLoaderLinks.preload,  true && inAmpMode && /*#__PURE__*/ _react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/ _react.default.createElement("meta", {
             name: "viewport",
             content: "width=device-width,minimum-scale=1,initial-scale=1"
         }), !hasCanonicalRel && /*#__PURE__*/ _react.default.createElement("link", {
@@ -586,15 +550,16 @@ class Head extends _react.default.Component {
         }), styles || null), /*#__PURE__*/ _react.default.createElement(_react.default.Fragment, {}, ...headTags || []));
     }
 }
+exports.Head = Head;
 function handleDocumentScriptLoaderItems(scriptLoader, __NEXT_DATA__, props) {
-    var _children_find, _children_find_props, _children_find1, _children_find_props1;
+    var ref10, ref7, ref8, ref9;
     if (!props.children) return;
     const scriptLoaderItems = [];
     const children = Array.isArray(props.children) ? props.children : [
         props.children
     ];
-    const headChildren = (_children_find = children.find((child)=>child.type === Head)) == null ? void 0 : (_children_find_props = _children_find.props) == null ? void 0 : _children_find_props.children;
-    const bodyChildren = (_children_find1 = children.find((child)=>child.type === "body")) == null ? void 0 : (_children_find_props1 = _children_find1.props) == null ? void 0 : _children_find_props1.children;
+    const headChildren = (ref10 = children.find((child)=>child.type === Head)) == null ? void 0 : (ref7 = ref10.props) == null ? void 0 : ref7.children;
+    const bodyChildren = (ref8 = children.find((child)=>child.type === "body")) == null ? void 0 : (ref9 = ref8.props) == null ? void 0 : ref9.children;
     // Scripts with beforeInteractive can be placed inside Head or <body> so children of both needs to be traversed
     const combinedChildren = [
         ...Array.isArray(headChildren) ? headChildren : [
@@ -605,10 +570,10 @@ function handleDocumentScriptLoaderItems(scriptLoader, __NEXT_DATA__, props) {
         ]
     ];
     _react.default.Children.forEach(combinedChildren, (child)=>{
-        var _child_type;
+        var ref;
         if (!child) return;
         // When using the `next/script` component, register it in script loader.
-        if ((_child_type = child.type) == null ? void 0 : _child_type.__nextScript) {
+        if ((ref = child.type) == null ? void 0 : ref.__nextScript) {
             if (child.props.strategy === "beforeInteractive") {
                 scriptLoader.beforeInteractive = (scriptLoader.beforeInteractive || []).concat([
                     {
@@ -629,9 +594,7 @@ function handleDocumentScriptLoaderItems(scriptLoader, __NEXT_DATA__, props) {
     __NEXT_DATA__.scriptLoader = scriptLoaderItems;
 }
 class NextScript extends _react.default.Component {
-    static #_ = (()=>{
-        this.contextType = _htmlcontext.HtmlContext;
-    })();
+    static contextType = _htmlContext.HtmlContext;
     getDynamicChunks(files) {
         return getDynamicChunks(this.context, this.props, files);
     }
@@ -648,20 +611,14 @@ class NextScript extends _react.default.Component {
         const { __NEXT_DATA__ , largePageDataBytes  } = context;
         try {
             const data = JSON.stringify(__NEXT_DATA__);
-            if (largePageDataWarnings.has(__NEXT_DATA__.page)) {
-                return (0, _htmlescape.htmlEscapeJsonString)(data);
-            }
             const bytes =  false ? 0 : Buffer.from(data).byteLength;
             const prettyBytes = (__webpack_require__(5955)/* ["default"] */ .Z);
             if (largePageDataBytes && bytes > largePageDataBytes) {
-                if (true) {
-                    largePageDataWarnings.add(__NEXT_DATA__.page);
-                }
                 console.warn(`Warning: data for page "${__NEXT_DATA__.page}"${__NEXT_DATA__.page === context.dangerousAsPath ? "" : ` (path "${context.dangerousAsPath}")`} is ${prettyBytes(bytes)} which exceeds the threshold of ${prettyBytes(largePageDataBytes)}, this amount of data can reduce performance.\nSee more info here: https://nextjs.org/docs/messages/large-page-data`);
             }
-            return (0, _htmlescape.htmlEscapeJsonString)(data);
+            return (0, _htmlescape).htmlEscapeJsonString(data);
         } catch (err) {
-            if ((0, _iserror.default)(err) && err.message.indexOf("circular structure") !== -1) {
+            if ((0, _isError).default(err) && err.message.indexOf("circular structure") !== -1) {
                 throw new Error(`Circular structure in "getInitialProps" result of page "${__NEXT_DATA__.page}". https://nextjs.org/docs/messages/circular-structure`);
             }
             throw err;
@@ -715,33 +672,22 @@ class NextScript extends _react.default.Component {
         }), disableOptimizedLoading && !disableRuntimeJS && this.getPolyfillScripts(), disableOptimizedLoading && !disableRuntimeJS && this.getPreNextScripts(), disableOptimizedLoading && !disableRuntimeJS && this.getDynamicChunks(files), disableOptimizedLoading && !disableRuntimeJS && this.getScripts(files));
     }
 }
+exports.NextScript = NextScript;
 function Html(props) {
-    const { inAmpMode , docComponentsRendered , locale , scriptLoader , __NEXT_DATA__  } = (0, _react.useContext)(_htmlcontext.HtmlContext);
+    const { inAmpMode , docComponentsRendered , locale , scriptLoader , __NEXT_DATA__  } = (0, _react).useContext(_htmlContext.HtmlContext);
     docComponentsRendered.Html = true;
     handleDocumentScriptLoaderItems(scriptLoader, __NEXT_DATA__, props);
-    return /*#__PURE__*/ _react.default.createElement("html", {
-        ...props,
+    return /*#__PURE__*/ _react.default.createElement("html", Object.assign({}, props, {
         lang: props.lang || locale || undefined,
         amp:  true && inAmpMode ? "" : undefined,
         "data-ampdevmode":  true && inAmpMode && "production" !== "production" ? 0 : undefined
-    });
+    }));
 }
 function Main() {
-    const { docComponentsRendered  } = (0, _react.useContext)(_htmlcontext.HtmlContext);
+    const { docComponentsRendered  } = (0, _react).useContext(_htmlContext.HtmlContext);
     docComponentsRendered.Main = true;
     // @ts-ignore
     return /*#__PURE__*/ _react.default.createElement("next-js-internal-body-render-target", null);
-}
-class Document extends _react.default.Component {
-    /**
-   * `getInitialProps` hook returns the context object with the addition of `renderPage`.
-   * `renderPage` callback executes `React` rendering logic synchronously to support server-rendering wrappers
-   */ static getInitialProps(ctx) {
-        return ctx.defaultGetInitialProps(ctx);
-    }
-    render() {
-        return /*#__PURE__*/ _react.default.createElement(Html, null, /*#__PURE__*/ _react.default.createElement(Head, null), /*#__PURE__*/ _react.default.createElement("body", null, /*#__PURE__*/ _react.default.createElement(Main, null), /*#__PURE__*/ _react.default.createElement(NextScript, null)));
-    }
 }
 // Add a special property to the built-in `Document` component so later we can
 // identify if a user customized `Document` is used or not.
@@ -760,22 +706,9 @@ Document[_constants.NEXT_BUILTIN_DOCUMENT] = InternalFunctionDocument; //# sourc
 Object.defineProperty(exports, "__esModule", ({
     value: true
 }));
-0 && (0);
-function _export(target, all) {
-    for(var name in all)Object.defineProperty(target, name, {
-        enumerable: true,
-        get: all[name]
-    });
-}
-_export(exports, {
-    default: function() {
-        return isError;
-    },
-    getProperError: function() {
-        return getProperError;
-    }
-});
-const _isplainobject = __webpack_require__(8524);
+exports["default"] = isError;
+exports.getProperError = getProperError;
+var _isPlainObject = __webpack_require__(8524);
 function isError(err) {
     return typeof err === "object" && err !== null && "name" in err && "message" in err;
 }
@@ -784,7 +717,7 @@ function getProperError(err) {
         return err;
     }
     if (false) {}
-    return new Error((0, _isplainobject.isPlainObject)(err) ? JSON.stringify(err) : err + "");
+    return new Error((0, _isPlainObject).isPlainObject(err) ? JSON.stringify(err) : err + "");
 }
 
 //# sourceMappingURL=is-error.js.map
@@ -795,6 +728,34 @@ function getProperError(err) {
 /***/ ((__unused_webpack_module, exports) => {
 
 var __webpack_unused_export__;
+
+__webpack_unused_export__ = ({
+    value: true
+});
+exports.Z = prettyBytes;
+function prettyBytes(number, options) {
+    if (!Number.isFinite(number)) {
+        throw new TypeError(`Expected a finite number, got ${typeof number}: ${number}`);
+    }
+    options = Object.assign({}, options);
+    if (options.signed && number === 0) {
+        return " 0 B";
+    }
+    const isNegative = number < 0;
+    const prefix = isNegative ? "-" : options.signed ? "+" : "";
+    if (isNegative) {
+        number = -number;
+    }
+    if (number < 1) {
+        const numberString = toLocaleString(number, options.locale);
+        return prefix + numberString + " B";
+    }
+    const exponent = Math.min(Math.floor(Math.log10(number) / 3), UNITS.length - 1);
+    number = Number((number / Math.pow(1000, exponent)).toPrecision(3));
+    const numberString = toLocaleString(number, options.locale);
+    const unit = UNITS[exponent];
+    return prefix + numberString + " " + unit;
+}
 /*
 MIT License
 
@@ -805,17 +766,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/ 
-__webpack_unused_export__ = ({
-    value: true
-});
-Object.defineProperty(exports, "Z", ({
-    enumerable: true,
-    get: function() {
-        return prettyBytes;
-    }
-}));
-const UNITS = [
+*/ const UNITS = [
     "B",
     "kB",
     "MB",
@@ -840,31 +791,15 @@ Formats the given number using `Number#toLocaleString`.
     }
     return result;
 };
-function prettyBytes(number, options) {
-    if (!Number.isFinite(number)) {
-        throw new TypeError(`Expected a finite number, got ${typeof number}: ${number}`);
-    }
-    options = Object.assign({}, options);
-    if (options.signed && number === 0) {
-        return " 0 B";
-    }
-    const isNegative = number < 0;
-    const prefix = isNegative ? "-" : options.signed ? "+" : "";
-    if (isNegative) {
-        number = -number;
-    }
-    if (number < 1) {
-        const numberString = toLocaleString(number, options.locale);
-        return prefix + numberString + " B";
-    }
-    const exponent = Math.min(Math.floor(Math.log10(number) / 3), UNITS.length - 1);
-    number = Number((number / Math.pow(1000, exponent)).toPrecision(3));
-    const numberString = toLocaleString(number, options.locale);
-    const unit = UNITS[exponent];
-    return prefix + numberString + " " + unit;
-}
 
 //# sourceMappingURL=pretty-bytes.js.map
+
+/***/ }),
+
+/***/ 8038:
+/***/ ((module) => {
+
+module.exports = require("next/dist/compiled/react");
 
 /***/ }),
 
@@ -908,13 +843,6 @@ module.exports = require("next/dist/shared/lib/html-context.js");
 
 module.exports = require("next/dist/shared/lib/is-plain-object.js");
 
-/***/ }),
-
-/***/ 6689:
-/***/ ((module) => {
-
-module.exports = require("react");
-
 /***/ })
 
 };
@@ -924,7 +852,7 @@ module.exports = require("react");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = (__webpack_exec__(7930));
+var __webpack_exports__ = (__webpack_exec__(3109));
 module.exports = __webpack_exports__;
 
 })();

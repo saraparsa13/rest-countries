@@ -5,30 +5,139 @@ exports.id = 820;
 exports.ids = [820];
 exports.modules = {
 
-/***/ 4600:
+/***/ 6495:
+/***/ ((__unused_webpack_module, exports) => {
+
+var __webpack_unused_export__;
+
+__webpack_unused_export__ = ({
+    value: true
+});
+Object.defineProperty(exports, "Z", ({
+    enumerable: true,
+    get: function() {
+        return _extends;
+    }
+}));
+function extends_() {
+    extends_ = Object.assign || function(target) {
+        for(var i = 1; i < arguments.length; i++){
+            var source = arguments[i];
+            for(var key in source){
+                if (Object.prototype.hasOwnProperty.call(source, key)) {
+                    target[key] = source[key];
+                }
+            }
+        }
+        return target;
+    };
+    return extends_.apply(this, arguments);
+}
+function _extends() {
+    return extends_.apply(this, arguments);
+}
+
+
+/***/ }),
+
+/***/ 2648:
+/***/ ((__unused_webpack_module, exports) => {
+
+var __webpack_unused_export__;
+
+__webpack_unused_export__ = ({
+    value: true
+});
+Object.defineProperty(exports, "Z", ({
+    enumerable: true,
+    get: function() {
+        return _interopRequireDefault;
+    }
+}));
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        default: obj
+    };
+}
+
+
+/***/ }),
+
+/***/ 1598:
+/***/ ((__unused_webpack_module, exports) => {
+
+var __webpack_unused_export__;
+
+__webpack_unused_export__ = ({
+    value: true
+});
+Object.defineProperty(exports, "Z", ({
+    enumerable: true,
+    get: function() {
+        return _interopRequireWildcard;
+    }
+}));
+function _getRequireWildcardCache(nodeInterop) {
+    if (typeof WeakMap !== "function") return null;
+    var cacheBabelInterop = new WeakMap();
+    var cacheNodeInterop = new WeakMap();
+    return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) {
+        return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
+    })(nodeInterop);
+}
+function _interopRequireWildcard(obj, nodeInterop) {
+    if (!nodeInterop && obj && obj.__esModule) {
+        return obj;
+    }
+    if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
+        return {
+            default: obj
+        };
+    }
+    var cache = _getRequireWildcardCache(nodeInterop);
+    if (cache && cache.has(obj)) {
+        return cache.get(obj);
+    }
+    var newObj = {};
+    var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+    for(var key in obj){
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+            var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+            if (desc && (desc.get || desc.set)) {
+                Object.defineProperty(newObj, key, desc);
+            } else {
+                newObj[key] = obj[key];
+            }
+        }
+    }
+    newObj.default = obj;
+    if (cache) {
+        cache.set(obj, newObj);
+    }
+    return newObj;
+}
+
+
+/***/ }),
+
+/***/ 8863:
 /***/ ((module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({
     value: true
 }));
-Object.defineProperty(exports, "default", ({
-    enumerable: true,
-    get: function() {
-        return Error;
-    }
-}));
-const _interop_require_default = __webpack_require__(167);
-const _react = /*#__PURE__*/ _interop_require_default._(__webpack_require__(6689));
-const _head = /*#__PURE__*/ _interop_require_default._(__webpack_require__(8965));
+exports["default"] = void 0;
+var _interop_require_default = (__webpack_require__(2648)/* ["default"] */ .Z);
+var _react = _interop_require_default(__webpack_require__(8038));
+var _head = _interop_require_default(__webpack_require__(2249));
 const statusCodes = {
     400: "Bad Request",
     404: "This page could not be found",
     405: "Method Not Allowed",
     500: "Internal Server Error"
 };
-function _getInitialProps(param) {
-    let { res , err  } = param;
+function _getInitialProps({ res , err  }) {
     const statusCode = res && res.statusCode ? res.statusCode : err ? err.statusCode : 404;
     return {
         statusCode
@@ -36,8 +145,7 @@ function _getInitialProps(param) {
 }
 const styles = {
     error: {
-        // https://github.com/sindresorhus/modern-normalize/blob/main/modern-normalize.css#L38-L52
-        fontFamily: 'system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"',
+        fontFamily: '-apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Fira Sans", Avenir, "Helvetica Neue", "Lucida Grande", sans-serif',
         height: "100vh",
         textAlign: "center",
         display: "flex",
@@ -47,49 +155,50 @@ const styles = {
     },
     desc: {
         display: "inline-block",
-        textAlign: "left"
+        textAlign: "left",
+        lineHeight: "49px",
+        height: "49px",
+        verticalAlign: "middle"
     },
     h1: {
         display: "inline-block",
-        margin: "0 20px 0 0",
-        paddingRight: 23,
-        fontSize: 24,
+        margin: 0,
+        marginRight: "20px",
+        padding: "0 23px 0 0",
+        fontSize: "24px",
         fontWeight: 500,
         verticalAlign: "top",
         lineHeight: "49px"
     },
     h2: {
-        fontSize: 14,
-        fontWeight: 400,
+        fontSize: "14px",
+        fontWeight: "normal",
         lineHeight: "49px",
-        margin: 0
+        margin: 0,
+        padding: 0
     }
 };
-class Error extends _react.default.Component {
+var _Component;
+class Error extends (_Component = _react.default.Component) {
     render() {
         const { statusCode , withDarkMode =true  } = this.props;
         const title = this.props.title || statusCodes[statusCode] || "An unexpected error has occurred";
         return /*#__PURE__*/ _react.default.createElement("div", {
             style: styles.error
-        }, /*#__PURE__*/ _react.default.createElement(_head.default, null, /*#__PURE__*/ _react.default.createElement("title", null, statusCode ? statusCode + ": " + title : "Application error: a client-side exception has occurred")), /*#__PURE__*/ _react.default.createElement("div", null, /*#__PURE__*/ _react.default.createElement("style", {
+        }, /*#__PURE__*/ _react.default.createElement(_head.default, null, /*#__PURE__*/ _react.default.createElement("title", null, statusCode ? `${statusCode}: ${title}` : "Application error: a client-side exception has occurred")), /*#__PURE__*/ _react.default.createElement("div", null, /*#__PURE__*/ _react.default.createElement("style", {
             dangerouslySetInnerHTML: {
-                /* CSS minified from
+                __html: `
                 body { margin: 0; color: #000; background: #fff; }
                 .next-error-h1 {
                   border-right: 1px solid rgba(0, 0, 0, .3);
                 }
 
-                ${
-                  withDarkMode
-                    ? `@media (prefers-color-scheme: dark) {
+                ${withDarkMode ? `@media (prefers-color-scheme: dark) {
                   body { color: #fff; background: #000; }
                   .next-error-h1 {
                     border-right: 1px solid rgba(255, 255, 255, .3);
                   }
-                }`
-                    : ''
-                }
-               */ __html: "body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}" + (withDarkMode ? "@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}" : "")
+                }` : ""}`
             }
         }), statusCode ? /*#__PURE__*/ _react.default.createElement("h1", {
             className: "next-error-h1",
@@ -101,15 +210,10 @@ class Error extends _react.default.Component {
         }, this.props.title || statusCode ? title : /*#__PURE__*/ _react.default.createElement(_react.default.Fragment, null, "Application error: a client-side exception has occurred (see the browser console for more information)"), "."))));
     }
 }
-(()=>{
-    Error.displayName = "ErrorPage";
-})();
-(()=>{
-    Error.getInitialProps = _getInitialProps;
-})();
-(()=>{
-    Error.origGetInitialProps = _getInitialProps;
-})();
+Error.displayName = "ErrorPage";
+Error.getInitialProps = _getInitialProps;
+Error.origGetInitialProps = _getInitialProps;
+exports["default"] = Error;
 if ((typeof exports.default === "function" || typeof exports.default === "object" && exports.default !== null) && typeof exports.default.__esModule === "undefined") {
     Object.defineProperty(exports.default, "__esModule", {
         value: true
@@ -121,38 +225,25 @@ if ((typeof exports.default === "function" || typeof exports.default === "object
 
 /***/ }),
 
-/***/ 8965:
+/***/ 2249:
 /***/ ((module, exports, __webpack_require__) => {
 
-/* __next_internal_client_entry_do_not_use__  cjs */ 
+
 Object.defineProperty(exports, "__esModule", ({
     value: true
 }));
-0 && (0);
-function _export(target, all) {
-    for(var name in all)Object.defineProperty(target, name, {
-        enumerable: true,
-        get: all[name]
-    });
-}
-_export(exports, {
-    defaultHead: function() {
-        return defaultHead;
-    },
-    default: function() {
-        return _default;
-    }
-});
-const _interop_require_default = __webpack_require__(167);
-const _interop_require_wildcard = __webpack_require__(8760);
-const _react = /*#__PURE__*/ _interop_require_wildcard._(__webpack_require__(6689));
-const _sideeffect = /*#__PURE__*/ _interop_require_default._(__webpack_require__(2470));
-const _ampcontext = __webpack_require__(3918);
-const _headmanagercontext = __webpack_require__(2796);
-const _ampmode = __webpack_require__(5732);
-const _warnonce = __webpack_require__(618);
-function defaultHead(inAmpMode) {
-    if (inAmpMode === void 0) inAmpMode = false;
+exports.defaultHead = defaultHead;
+exports["default"] = void 0;
+var _extends = (__webpack_require__(6495)/* ["default"] */ .Z);
+var _interop_require_default = (__webpack_require__(2648)/* ["default"] */ .Z);
+var _interop_require_wildcard = (__webpack_require__(1598)/* ["default"] */ .Z);
+var _react = _interop_require_wildcard(__webpack_require__(8038));
+var _sideEffect = _interop_require_default(__webpack_require__(2470));
+var _ampContext = __webpack_require__(3918);
+var _headManagerContext = __webpack_require__(2796);
+var _ampMode = __webpack_require__(5732);
+var _warnOnce = __webpack_require__(618);
+function defaultHead(inAmpMode = false) {
     const head = [
         /*#__PURE__*/ _react.default.createElement("meta", {
             charSet: "utf-8"
@@ -258,9 +349,7 @@ const METATYPES = [
                 "https://fonts.googleapis.com/css",
                 "https://use.typekit.net/"
             ].some((url)=>c.props["href"].startsWith(url))) {
-                const newProps = {
-                    ...c.props || {}
-                };
+                const newProps = _extends({}, c.props || {});
                 newProps["data-href"] = newProps["href"];
                 newProps["href"] = undefined;
                 // Add this attribute to make it easy to identify optimized tags
@@ -277,17 +366,17 @@ const METATYPES = [
 /**
  * This component injects elements to `<head>` of your page.
  * To avoid duplicated `tags` in `<head>` you can use the `key` property, which will make sure every tag is only rendered once.
- */ function Head(param) {
-    let { children  } = param;
-    const ampState = (0, _react.useContext)(_ampcontext.AmpStateContext);
-    const headManager = (0, _react.useContext)(_headmanagercontext.HeadManagerContext);
-    return /*#__PURE__*/ _react.default.createElement(_sideeffect.default, {
+ */ function Head({ children  }) {
+    const ampState = (0, _react).useContext(_ampContext.AmpStateContext);
+    const headManager = (0, _react).useContext(_headManagerContext.HeadManagerContext);
+    return /*#__PURE__*/ _react.default.createElement(_sideEffect.default, {
         reduceComponentsToState: reduceComponents,
         headManager: headManager,
-        inAmpMode: (0, _ampmode.isInAmpMode)(ampState)
+        inAmpMode: (0, _ampMode).isInAmpMode(ampState)
     }, children);
 }
-const _default = Head;
+var _default = Head;
+exports["default"] = _default;
 if ((typeof exports.default === "function" || typeof exports.default === "object" && exports.default !== null) && typeof exports.default.__esModule === "undefined") {
     Object.defineProperty(exports.default, "__esModule", {
         value: true
@@ -296,6 +385,13 @@ if ((typeof exports.default === "function" || typeof exports.default === "object
     module.exports = exports.default;
 } //# sourceMappingURL=head.js.map
 
+
+/***/ }),
+
+/***/ 8038:
+/***/ ((module) => {
+
+module.exports = require("next/dist/compiled/react");
 
 /***/ }),
 
@@ -332,71 +428,6 @@ module.exports = require("next/dist/shared/lib/side-effect.js");
 
 module.exports = require("next/dist/shared/lib/utils/warn-once.js");
 
-/***/ }),
-
-/***/ 6689:
-/***/ ((module) => {
-
-module.exports = require("react");
-
-/***/ }),
-
-/***/ 167:
-/***/ ((__unused_webpack_module, exports) => {
-
-
-
-exports._ = exports._interop_require_default = _interop_require_default;
-function _interop_require_default(obj) {
-    return obj && obj.__esModule ? obj : { default: obj };
-}
-
-
-/***/ }),
-
-/***/ 8760:
-/***/ ((__unused_webpack_module, exports) => {
-
-
-
-function _getRequireWildcardCache(nodeInterop) {
-    if (typeof WeakMap !== "function") return null;
-
-    var cacheBabelInterop = new WeakMap();
-    var cacheNodeInterop = new WeakMap();
-
-    return (_getRequireWildcardCache = function(nodeInterop) {
-        return nodeInterop ? cacheNodeInterop : cacheBabelInterop;
-    })(nodeInterop);
-}
-exports._ = exports._interop_require_wildcard = _interop_require_wildcard;
-function _interop_require_wildcard(obj, nodeInterop) {
-    if (!nodeInterop && obj && obj.__esModule) return obj;
-    if (obj === null || typeof obj !== "object" && typeof obj !== "function") return { default: obj };
-
-    var cache = _getRequireWildcardCache(nodeInterop);
-
-    if (cache && cache.has(obj)) return cache.get(obj);
-
-    var newObj = {};
-    var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-
-    for (var key in obj) {
-        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
-            var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-            if (desc && (desc.get || desc.set)) Object.defineProperty(newObj, key, desc);
-            else newObj[key] = obj[key];
-        }
-    }
-
-    newObj.default = obj;
-
-    if (cache) cache.set(obj, newObj);
-
-    return newObj;
-}
-
-
 /***/ })
 
 };
@@ -406,7 +437,7 @@ function _interop_require_wildcard(obj, nodeInterop) {
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = (__webpack_exec__(4600));
+var __webpack_exports__ = (__webpack_exec__(8863));
 module.exports = __webpack_exports__;
 
 })();

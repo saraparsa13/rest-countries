@@ -1,12 +1,12 @@
-import { Metadata } from "next";
+// import { Metadata } from "next";
 import { getAllCountries } from "./services/api";
 import Container from "./components/Container";
 
 // export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = {
-  title: "Home Page",
-};
+// export const metadata: Metadata = {
+//   title: "Home Page",
+// };
 
 export default async function Home() {
   const data = await loadData();
