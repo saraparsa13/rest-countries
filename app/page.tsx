@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { getAllCountries } from "./services/api";
 import Container from "./components/Container";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
   title: "Home Page",
