@@ -13,7 +13,6 @@ const Dropdown = ({ title, options, onItemSelect }: DropdownProps) => {
   const handleSelect = (e: MouseEvent, slug: string) => {
     e.stopPropagation();
     onItemSelect(slug || "");
-    console.log("slug", slug);
   };
 
   const classNames = (...classes: string[]) => {

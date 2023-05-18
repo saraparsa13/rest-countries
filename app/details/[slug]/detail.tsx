@@ -12,7 +12,6 @@ export type DetailProps = {
 
 const Detail = (props: DetailProps) => {
   const { country } = props;
-  console.log(country.name.nativeName)
   return (
     <div className="w-full flex justify-center">
       <div className="xl:w-80 lg:w-64 md:w-48 sm:w-40 w-16 pb-20">

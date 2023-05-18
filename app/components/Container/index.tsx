@@ -57,7 +57,6 @@ const Container = ({ countries: countriesData }: ContainerProps) => {
     } else {
       setCountries(countriesData);
     }
-    console.log(value)
   };
 
   const onSelectRegion = (region: string) => {
