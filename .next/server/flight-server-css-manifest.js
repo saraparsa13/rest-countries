@@ -5,10 +5,10 @@ self.__RSC_CSS_MANIFEST={
     ]
   },
   "cssModules": {
-    "/Users/saraparsa/projects/git/rest-countries/app/page": [
+    "/Users/saraparsa/projects/git/rest-countries/app/details/[slug]/page": [
       "/Users/saraparsa/projects/git/rest-countries/app/globals.css"
     ],
-    "/Users/saraparsa/projects/git/rest-countries/app/details/[slug]/page": [
+    "/Users/saraparsa/projects/git/rest-countries/app/page": [
       "/Users/saraparsa/projects/git/rest-countries/app/globals.css"
     ]
   }

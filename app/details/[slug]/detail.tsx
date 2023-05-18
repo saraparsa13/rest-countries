@@ -12,6 +12,7 @@ export type DetailProps = {
 
 const Detail = (props: DetailProps) => {
   const { country } = props;
+  console.log("country", country);
   return (
     <div className="w-full flex justify-center">
       <div className="xl:w-80 lg:w-64 md:w-48 sm:w-40 w-16 pb-20">
@@ -39,7 +40,11 @@ const Detail = (props: DetailProps) => {
             </span>
             <div className="flex flex-row gap-20">
               <Info
-                nativeName={Object.values(country.name.nativeName)[0].common}
+                nativeName={
+                  country.name.nativeName
+                    ? Object.values(country.name.nativeName)[0].common
+                    : "-"
+                }
                 population={
                   country.population ? formatNumber(country.population) : "-"
                 }
@@ -48,20 +53,16 @@ const Detail = (props: DetailProps) => {
                 capital={country.capital || "-"}
               />
               <Info
-                tld={
-                  country.tld?.length
-                    ? country.tld.join(", ")
-                    : "-"
-                }
+                tld={country.tld?.length ? country.tld.join(", ") : "-"}
                 currencies={
-                  Object.values(country.currencies).length
+                  country.currencies
                     ? Object.values(country.currencies)
                         .map((currency) => currency.name)
                         .join(", ")
                     : "-"
                 }
                 languages={
-                  Object.values(country.languages).length
+                  country.languages && Object.values(country.languages).length
                     ? Object.values(country.languages)
                         .map((language) => language)
                         .join(", ")
@@ -75,7 +76,7 @@ const Detail = (props: DetailProps) => {
                 {country.borders?.length
                   ? country.borders.map((border) => (
                       <Link
-                        className="shadow-xxl px-8 py-1 rounded-sm text-sm dark:bg-darkModeElement" 
+                        className="shadow-xxl px-8 py-1 rounded-sm text-sm dark:bg-darkModeElement"
                         key={border}
                         href={`/details/${border.toLocaleLowerCase()}`}
                       >
