@@ -5,7 +5,8 @@ const nextConfig = {
   // output: 'export',
   experimental: {
     appDir: true,
-  }
+  },
+  output: ' '
 }
 
 module.exports = nextConfig
