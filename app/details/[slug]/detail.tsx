@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import Link from "next/link";
 import { Country } from "@/app/utils/types";
 import { formatNumber } from "@/app/utils";
