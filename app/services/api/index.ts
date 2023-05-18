@@ -22,5 +22,5 @@ export const getByCode = (code: string) =>
     headers: {
       accept: "application/json",
     },
-    next: { revalidate: 20 },
+    // next: { revalidate: 20 },
   });

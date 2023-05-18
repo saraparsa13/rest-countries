@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   title: "Detail",
 };
 
+export const dynamic = 'force-static';
+
 type Props = {
   params: { slug: string };
 };
@@ -16,7 +18,7 @@ export default async function Details({ params: { slug } }: Props) {
 }
 
 async function loadData(slug: string) {
-  console.log('slug', slug)
+
   try {
     const res = await getByCode(slug);
 
