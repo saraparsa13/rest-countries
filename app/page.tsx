@@ -2,7 +2,7 @@
 import { getAllCountries } from "./services/api";
 import Container from "./components/Container";
 
-// export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic';
 
 // export const metadata: Metadata = {
 //   title: "Home Page",

@@ -1,10 +1,10 @@
-// import { Metadata } from "next";
+import { Metadata } from "next";
 import Detail from "./detail";
 import { getByCode } from "@/app/services/api";
 
-// export const metadata: Metadata = {
-//   title: "Detail",
-// };
+export const metadata: Metadata = {
+  title: "Detail",
+};
 
 type Props = {
   params: { slug: string };
@@ -16,6 +16,7 @@ export default async function Details({ params: { slug } }: Props) {
 }
 
 async function loadData(slug: string) {
+  console.log('slug', slug)
   try {
     const res = await getByCode(slug);
 
