@@ -3,8 +3,12 @@
 import { Country } from "@/app/utils/types";
 import { capitalize } from "@/app/utils";
 
+export type CountryWithoutName = Omit<Country, 'name'> & {
+  nativeName: string
+};
+
 type InfoProps = {
-  [Property in keyof Country]?: string | number;
+  [Property in keyof CountryWithoutName]?: string | number;
 };
 
 const Info = (props: InfoProps) => {
