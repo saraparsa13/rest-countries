@@ -6,8 +6,6 @@ export const metadata: Metadata = {
   title: "Detail",
 };
 
-export const dynamic = 'force-static';
-
 type Props = {
   params: { slug: string };
 };
