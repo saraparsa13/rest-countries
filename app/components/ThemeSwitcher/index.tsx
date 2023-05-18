@@ -1,7 +1,6 @@
 "use client";
 import Cookies from "universal-cookie";
 import { MouseEvent } from "react";
-import { Switch } from '@headlessui/react'
 
 import Icon from "./Icon";
 // import * as S from "./styles";
